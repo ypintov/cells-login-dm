@@ -25,16 +25,18 @@ export class CellsLoginDm extends LitElement {
   // Declare properties
   static get properties() {
     return {
-      host: {type: String},
+      host: { type: String },
       country: {type: String},
+      consumerId: {type: String},
     };
   }
 
   // Initialize properties
   constructor() {
     super();
-    this.host = 'https://cal-glomo.bbva.pe/SRVS_A02';
+    this.host = '';
     this.country = 'pe';
+    this.consumerId = '';
   }
 
   static get styles() {
@@ -44,13 +46,13 @@ export class CellsLoginDm extends LitElement {
     ];
   }
 
-  login(userId, password, consumerId){
+  login(userId, password){
     const dataProvider = new BGADPGrantingTicketsPostV0(this.country, {
       host: this.host
     });
 
     dataProvider.generateRequest({
-      consumerId,
+      consumerId: this.consumerId,
       userId,
       password
     }).then(

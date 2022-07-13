@@ -38,9 +38,11 @@
             document.addEventListener('WebComponentsReady', ()=>{
               const btn = document.querySelector('button');
               const dm = document.querySelector('cells-login-dm');
+              dm.host = 'https://tst-glomo.bbva.pe/SRVS_A02';
+              dm.consumerId = '13000013';
               btn.addEventListener('click', ()=>{
                 document.querySelector('textarea').value = 'Obteniendo tsec...';
-                dm.login('L55555553', 'bbva01', '13000013');
+                dm.login('L42271281', 'bbva01');
               });
               dm.addEventListener('login-success', ({detail})=>{
                 console.log('successTsec', detail);
